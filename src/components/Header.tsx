@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
+import { ThemeToggle } from '@/components/ThemeToggle'
 
 export function Header() {
     return (
@@ -14,6 +15,7 @@ export function Header() {
                     <Link href="#about" className="transition-colors hover:text-foreground/80 text-foreground/60">About</Link>
                     <Link href="#projects" className="transition-colors hover:text-foreground/80 text-foreground/60">Projects</Link>
                     <Link href="#contact" className="transition-colors hover:text-foreground/80 text-foreground/60">Contact</Link>
+                    <ThemeToggle />
                     <Button variant="outline" size="sm">Download CV</Button>
                 </nav>
             </div>

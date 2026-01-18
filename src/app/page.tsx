@@ -36,7 +36,7 @@ export default function Home() {
             <span className="text-primary">Digital Experiences</span>
           </h1>
           <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-            Senior Frontend Engineer specializing in building accessible, pixel-perfect, and performant web applications.
+            Senior Frontend Engineer specializing in building user-friendly, pixel-perfect, and performant web applications.
           </p>
         </div>
         <div className="flex flex-col sm:flex-row gap-4">
