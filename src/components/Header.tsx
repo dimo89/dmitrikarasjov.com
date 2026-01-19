@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet'
 import { Menu } from 'lucide-react'
+import Image from 'next/image'
 
 export function Header() {
     const [open, setOpen] = useState(false)
@@ -13,10 +14,13 @@ export function Header() {
     return (
         <>
             <header className="hidden md:flex sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-                <div className="container mx-auto flex py-2 items-center justify-end px-4 relative">
+                <div className="container mx-auto flex py-2 items-center justify-between px-4 relative">
+                    <Link href="/" className="flex items-center gap-2">
+                        <Image src="/logo.svg" alt="Logo" width={40} height={40} />
+                    </Link>
                     <nav className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-1">
                         <Button variant="ghost" asChild>
-                            <Link href="#about">About</Link>
+                            <Link href="#expertise">Expertise</Link>
                         </Button>
                         <Button variant="ghost" asChild>
                             <Link href="#projects">Projects</Link>
@@ -28,6 +32,12 @@ export function Header() {
                     <ThemeToggle />
                 </div>
             </header>
+
+            <div className="md:hidden flex justify-center sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+                <Link href="/" className="flex items-center gap-2 py-2">
+                    <Image src="/logo.svg" alt="Logo" width={40} height={40} />
+                </Link>
+            </div>
 
             <div className="md:hidden">
                 <Sheet open={open} onOpenChange={setOpen}>

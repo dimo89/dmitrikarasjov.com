@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+import { Code2, TrendingUp, Zap } from "lucide-react";
 
 export default function Home() {
   const projects = [
@@ -46,6 +47,52 @@ export default function Home() {
           <Button size="lg" variant="outline" asChild>
             <Link href="#contact">Contact Me</Link>
           </Button>
+        </div>
+      </section>
+
+      {/* Expertise Section */}
+      <section id="Expertise" className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">What I Bring to the Table</h2>
+            <p className="mx-auto max-w-[700px] text-muted-foreground md:text-lg">
+              Beyond just writing code, I focus on creating value and robust, scalable solutions.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Role */}
+            <div className="flex flex-col items-center text-center space-y-4 p-6 rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div className="p-3 bg-primary/10 rounded-full">
+                <Code2 className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold">Engineering Excellence</h3>
+              <p className="text-muted-foreground">
+                As a Senior Frontend Engineer, I build pixel-perfect, accessible, and performant web applications using modern architectures like Next.js and React.
+              </p>
+            </div>
+
+            {/* Business Value */}
+            <div className="flex flex-col items-center text-center space-y-4 p-6 rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div className="p-3 bg-primary/10 rounded-full">
+                <TrendingUp className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold">Business Impact</h3>
+              <p className="text-muted-foreground">
+                I bridge the gap between design and technology to deliver products that drive user engagement, improve retention, and solve real business problems.
+              </p>
+            </div>
+
+            {/* Strengths */}
+            <div className="flex flex-col items-center text-center space-y-4 p-6 rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div className="p-3 bg-primary/10 rounded-full">
+                <Zap className="h-8 w-8 text-primary" />
+              </div>
+              <h3 className="text-xl font-bold">Core Strengths</h3>
+              <p className="text-muted-foreground">
+                Scalable Component Systems • Performance Optimization • Technical Leadership • Mentoring • Complex State Management
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -102,7 +149,6 @@ export default function Home() {
           <p>&copy; {new Date().getFullYear()} Dmitri Karasjov. All rights reserved.</p>
           <div className="flex space-x-4 mt-4 sm:mt-0">
             <Link href="#" className="hover:text-foreground">GitHub</Link>
-            <Link href="#" className="hover:text-foreground">Twitter</Link>
             <Link href="#" className="hover:text-foreground">LinkedIn</Link>
           </div>
         </div>
