@@ -16,7 +16,7 @@ export function Header() {
             <header className="hidden md:flex sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
                 <div className="container mx-auto flex py-2 items-center justify-between px-4 relative">
                     <Link href="/" className="flex items-center gap-2">
-                        <Image src="/logo.svg" alt="Logo" width={40} height={40} />
+                        <Image src="/logo.svg" alt="Logo" width={40} height={40} className="dark:invert" />
                     </Link>
                     <nav className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-1">
                         <Button variant="ghost" asChild>
@@ -35,7 +35,7 @@ export function Header() {
 
             <div className="md:hidden flex justify-center sticky top-0 z-50 w-full bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
                 <Link href="/" className="flex items-center gap-2 py-2">
-                    <Image src="/logo.svg" alt="Logo" width={40} height={40} />
+                    <Image src="/logo.svg" alt="Logo" width={40} height={40} className="dark:invert" />
                 </Link>
             </div>
 
