@@ -1,39 +1,31 @@
+"use client"
+
 import { Button } from "@/components/ui/button";
+import { ContactModal } from "@/components/ContactModal";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { Code2, TrendingUp, Zap } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+
+import { projects } from "@/lib/data";
 
 export default function Home() {
-  const projects = [
-    {
-      title: "DCCC",
-      description: "A digital portal for the Dnipro Center for Contemporary Culture, created to showcase regional art and enhance community engagement.",
-      tags: ["React", "Next.js", "Tailwind", "Contentful", "GraphQL"],
-      link: "https://dniproccc.org/en-US",
-      logo: "/projects/logo-dccc.png"
-    },
-    {
-      title: "Custom Field Calculator",
-      description: "A Google Chrome extension for calculating custom fields in Pipedrive CRM.",
-      tags: ["React", "Node.js", "Socket.io", "PostgreSQL", "Express.js"],
-      link: "#",
-      logo: "/projects/logo-cfc.png"
-    },
-    {
-      title: "BatchApp",
-      description: "A web application and Google chrome extension for batch processing of orders in Katana MRP.",
-      tags: ["React", "Next.js", "Node.js", "Vite", "Tailwind", "TypeScript"],
-      link: "#",
-      logo: "/projects/logo-abx.png"
-    }
-  ];
+  const fadeInUp = {
+    initial: { opacity: 0, y: 20 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.5 }
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-24 md:py-32 flex flex-col items-center text-center space-y-8">
+      <motion.section
+        className="container mx-auto px-4 py-24 md:py-32 flex flex-col items-center text-center space-y-8"
+        {...fadeInUp}
+      >
         <div className="space-y-4 max-w-3xl">
           <Badge variant="secondary" className="mb-4">Available for Hire</Badge>
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
@@ -45,17 +37,18 @@ export default function Home() {
           </p>
         </div>
         <div className="flex flex-col sm:flex-row gap-4">
-          <Button size="lg" asChild>
-            <Link href="#projects">View Projects</Link>
-          </Button>
-          <Button size="lg" variant="outline" asChild>
-            <Link href="#contact">Contact Me</Link>
-          </Button>
+          <ContactModal>
+            <Button size="lg">Contact Me</Button>
+          </ContactModal>
         </div>
-      </section>
+      </motion.section>
 
       {/* Expertise Section */}
-      <section id="Expertise" className="py-20 bg-background">
+      <motion.section
+        id="Expertise"
+        className="py-20 bg-background"
+        {...fadeInUp}
+      >
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">What I Bring to the Table</h2>
@@ -98,12 +91,15 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
 
 
       {/* Technologies Section */}
-      <section className="py-20">
+      <motion.section
+        className="py-20"
+        {...fadeInUp}
+      >
         <div className="container mx-auto px-4">
           <div className="text-center mb-10">
             <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">Technologies I Work With</h2>
@@ -153,10 +149,14 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-20 bg-muted/50">
+      <motion.section
+        id="projects"
+        className="py-20 bg-muted/50"
+        {...fadeInUp}
+      >
         <div className="container mx-auto px-4">
           <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Featured Projects</h2>
@@ -168,7 +168,14 @@ export default function Home() {
             {projects.map((project, index) => (
               <Card key={index} className="flex flex-col justify-between">
                 <CardHeader>
-                  <Image src={project.logo} alt={project.title} width={200} height={200} className="dark:invert" />
+                  <div className="relative w-full h-48 mb-4">
+                    <Image
+                      src={project.logo}
+                      alt={project.title}
+                      fill
+                      className="object-contain dark:invert p-2"
+                    />
+                  </div>
                   <CardTitle>{project.title}</CardTitle>
                   <CardDescription>{project.description}</CardDescription>
                 </CardHeader>
@@ -181,17 +188,17 @@ export default function Home() {
                 </CardContent>
                 <CardFooter>
                   <Button variant="outline" className="w-full" asChild>
-                    <Link href={project.link}>View Details</Link>
+                    <Link href={`/projects/${project.slug}`}>View Details</Link>
                   </Button>
                 </CardFooter>
               </Card>
             ))}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-background">
+      {/* <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">What Clients Say</h2>
@@ -234,20 +241,26 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Contact Section */}
-      <section id="contact" className="py-20">
+      <motion.section
+        id="contact"
+        className="py-20 bg-black text-white"
+        {...fadeInUp}
+      >
         <div className="container mx-auto px-4 max-w-2xl text-center space-y-8">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Get In Touch</h2>
-          <p className="text-muted-foreground md:text-lg">
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-white">Get In Touch</h2>
+          <p className="text-gray-400 md:text-lg">
             I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
           </p>
-          <Button size="lg" className="w-full sm:w-auto" asChild>
-            <a href="mailto:hello@example.com">Say Hello</a>
-          </Button>
+          <ContactModal>
+            <Button size="lg" className="w-full sm:w-auto bg-white text-black hover:bg-gray-200">
+              Say Hello
+            </Button>
+          </ContactModal>
         </div>
-      </section>
+      </motion.section>
 
       {/* Footer */}
       <footer className="py-6 border-t">
