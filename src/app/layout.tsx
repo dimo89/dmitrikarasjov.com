@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Frontend Developer Portfolio",
-  description: "Portfolio of a Senior Frontend Engineer",
+  title: "Dmitri Karasjov",
+  description: "Senior Frontend Engineer | React & Next.js | Helping Startups Ship & Scale",
 };
 
 export default function RootLayout({
