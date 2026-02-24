@@ -50,7 +50,7 @@ export default function Home() {
       {/* Expertise Section */}
       <section
         id="expertise"
-        className="snap-center md:h-screen bg-muted/50 flex flex-col items-center justify-center"
+        className="snap-start md:h-screen bg-muted/50 flex flex-col items-center justify-center"
       >
         <motion.section className="container mx-auto px-4 py-20" {...fadeInUp}>
           <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
@@ -101,7 +101,7 @@ export default function Home() {
       {/* Stack Section */}
       <section
         id="stack"
-        className="snap-center h-screen flex flex-col items-center justify-center"
+        className="snap-start h-screen flex flex-col items-center justify-center"
       >
         <motion.section className="container mx-auto px-4 py-20" {...fadeInUp}>
           <div className="text-center mb-10">
@@ -160,7 +160,7 @@ export default function Home() {
       {/* Projects Section */}
       <section
         id="projects"
-        className="bg-muted/50 snap-center md:h-screen flex flex-col items-center justify-center"
+        className="bg-muted/50 snap-start md:h-screen flex flex-col items-center justify-center"
       >
         <motion.section className="container mx-auto px-4 py-20" {...fadeInUp}>
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -251,7 +251,7 @@ export default function Home() {
       {/* Contact Section */}
       <section
         id="contact"
-        className="snap-center h-screen bg-black text-white flex flex-col justify-between"
+        className="snap-start h-screen bg-black text-white flex flex-col justify-between"
       >
         <motion.section className="container flex flex-col mx-auto items-center justify-center h-full px-4 max-w-2xl text-center space-y-8 pt-20" {...fadeInUp}>
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-white font-martian-mono">Get In Touch</h2>
