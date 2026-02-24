@@ -5,32 +5,64 @@ import { ContactModal } from "@/components/ContactModal";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import { Code2, TrendingUp, Zap } from "lucide-react";
+import { Code2, TrendingUp, MonitorSmartphone, BriefcaseBusiness } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Header } from "@/components/Header";
-
 import { projects } from "@/lib/data";
+import { useEffect, useState } from "react";
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 5 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 1.0 }
+};
 
 export default function Home() {
-  const fadeInUp = {
-    initial: { opacity: 0, y: 5 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 1.0 }
-  };
+  const [activeSection, setActiveSection] = useState('hero');
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-10% 0px -80% 0px',
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+          window.history.replaceState(null, '', `#${entry.target.id === 'hero' ? '' : entry.target.id}`);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    const sectionElements = document.querySelectorAll('section[id]');
+    sectionElements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="h-screen snap-y snap-mandatory scroll-smooth overflow-y-scroll">
-      <Header />
+      <Header activeSection={activeSection} />
 
       {/* Hero Section */}
       <section
+        id="hero"
         className="container snap-start h-screen flex mx-auto"
       >
         <motion.section className="flex flex-col items-center text-center space-y-8 justify-center mx-auto px-4" {...fadeInUp}>
           <div className="space-y-4 max-w-3xl">
-            <Badge variant="secondary" className="mb-8 bg-highlight dark:text-black">Available for Hire</Badge>
+            <Badge asChild variant="secondary" className="mb-8 bg-highlight dark:text-black">
+              <div>
+                <BriefcaseBusiness />
+                <span>Available for Hire</span>
+              </div>
+            </Badge>
             <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl font-martian-mono">
               Crafting Exceptional <br className="hidden sm:inline" />
               <span className="text-primary">Digital Experiences</span>
@@ -56,7 +88,7 @@ export default function Home() {
           <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-martian-mono">My expertise that will help your business</h2>
             <p className="mx-auto max-w-[700px] text-muted-foreground md:text-lg mt-8">
-              Beyond just writing code, I focus on creating value and robust, scalable solutions.
+              Beyond just writing code, I specialise in Scalable Component Systems, Performance Optimization and Complex State Management.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -85,11 +117,11 @@ export default function Home() {
             {/* Strengths */}
             <div className="flex flex-col items-center text-center space-y-4 p-6 rounded-lg border bg-card text-card-foreground shadow-sm">
               <div className="p-3 bg-primary/10 rounded-full">
-                <Zap className="h-8 w-8 text-primary" />
+                <MonitorSmartphone className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-xl font-bold font-martian-mono">Core Strengths</h3>
+              <h3 className="text-xl font-bold font-martian-mono">Mobile First</h3>
               <p className="text-muted-foreground">
-                Scalable Component Systems • Performance Optimization • Technical Leadership • Mentoring • Complex State Management
+                I prioritize a mobile-first mindset, ensuring seamless, high-performance experience that is fully responsive and accessible across all devices and screen sizes.
               </p>
             </div>
           </div>
@@ -269,8 +301,8 @@ export default function Home() {
           <div className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-between text-sm text-gray-400">
             <p>&copy; {new Date().getFullYear()} Dmitri Karasjov. All rights reserved.</p>
             <div className="flex space-x-4 mt-4 sm:mt-0">
-              <Link href="https://github.com/dimo89" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-highlight">GitHub</Link>
-              <Link href="https://www.linkedin.com/in/dmitrikarasjov/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-highlight">LinkedIn</Link>
+              <Link href="https://github.com/dimo89" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-highlight hover:underline">GitHub</Link>
+              <Link href="https://www.linkedin.com/in/dmitrikarasjov/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-highlight hover:underline">LinkedIn</Link>
             </div>
           </div>
         </footer>

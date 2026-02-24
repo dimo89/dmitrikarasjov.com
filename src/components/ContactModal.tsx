@@ -4,7 +4,7 @@ import { useState, useRef } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import ReCAPTCHA from "react-google-recaptcha"
-import { Loader2 } from "lucide-react"
+import { Loader2, SendHorizontal } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -181,7 +181,7 @@ export function ContactModal({ children }: ContactModalProps) {
                             </FormItem>
 
                             <Button type="submit" className="w-full font-martian-mono" disabled={isLoading}>
-                                {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                                {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <SendHorizontal />}
                                 Send Message
                             </Button>
                         </form>

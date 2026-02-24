@@ -7,7 +7,7 @@ import { ThemeToggle } from '@/components/ThemeToggle'
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from '@/components/ui/sheet'
 import Image from 'next/image'
 
-export function Header() {
+export function Header({ activeSection }: { activeSection: string }) {
     const [open, setOpen] = useState(false)
 
     return (
@@ -18,16 +18,16 @@ export function Header() {
                         <Image src="/logo.svg" alt="Logo" width={40} height={40} className="dark:invert" />
                     </Link>
                     <nav className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-1">
-                        <Button variant="ghost" asChild>
+                        <Button variant={activeSection === 'expertise' ? 'outline' : 'ghost'} asChild >
                             <Link href="#expertise">Expertise</Link>
                         </Button>
-                        <Button variant="ghost" asChild>
+                        <Button variant={activeSection === 'stack' ? 'outline' : 'ghost'} asChild>
                             <Link href="#stack">Tech Stack</Link>
                         </Button>
-                        <Button variant="ghost" asChild>
+                        <Button variant={activeSection === 'projects' ? 'outline' : 'ghost'} asChild>
                             <Link href="#projects">Projects</Link>
                         </Button>
-                        <Button variant="ghost" asChild>
+                        <Button variant={activeSection === 'contact' ? 'outline' : 'ghost'} asChild>
                             <Link href="#contact">Contact</Link>
                         </Button>
                     </nav>
@@ -49,16 +49,16 @@ export function Header() {
                     <SheetContent side="bottom" className="">
                         <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
                         <div className="flex relative flex-col items-center justify-center space-y-4 pt-8">
-                            <Button variant="ghost" className="text-lg font-medium w-full" onClick={() => setOpen(false)} asChild>
+                            <Button variant={activeSection === 'expertise' ? 'outline' : 'ghost'} className="text-lg font-medium w-full" onClick={() => setOpen(false)} asChild>
                                 <Link href="#expertise">Expertise</Link>
                             </Button>
-                            <Button variant="ghost" className="text-lg font-medium w-full" onClick={() => setOpen(false)} asChild>
+                            <Button variant={activeSection === 'stack' ? 'outline' : 'ghost'} className="text-lg font-medium w-full" onClick={() => setOpen(false)} asChild>
                                 <Link href="#stack">Tech Stack</Link>
                             </Button>
-                            <Button variant="ghost" className="text-lg font-medium w-full" onClick={() => setOpen(false)} asChild>
+                            <Button variant={activeSection === 'projects' ? 'outline' : 'ghost'} className="text-lg font-medium w-full" onClick={() => setOpen(false)} asChild>
                                 <Link href="#projects">Projects</Link>
                             </Button>
-                            <Button variant="ghost" className="text-lg font-medium w-full" onClick={() => setOpen(false)} asChild>
+                            <Button variant={activeSection === 'contact' ? 'outline' : 'ghost'} className="text-lg font-medium w-full" onClick={() => setOpen(false)} asChild>
                                 <Link href="#contact">Contact</Link>
                             </Button>
                             <div className="absolute top-2 left-2 z-50">
