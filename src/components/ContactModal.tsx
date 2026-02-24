@@ -96,7 +96,7 @@ export function ContactModal({ children }: ContactModalProps) {
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                    <DialogTitle>Get in Touch</DialogTitle>
+                    <DialogTitle>Get In Touch</DialogTitle>
                     <DialogDescription>
                         Fill out the form below and I'll get back to you as soon as possible.
                     </DialogDescription>
@@ -180,7 +180,7 @@ export function ContactModal({ children }: ContactModalProps) {
                                 <FormMessage>{form.formState.errors.recaptchaToken?.message}</FormMessage>
                             </FormItem>
 
-                            <Button type="submit" className="w-full" disabled={isLoading}>
+                            <Button type="submit" className="w-full font-martian-mono" disabled={isLoading}>
                                 {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
                                 Send Message
                             </Button>

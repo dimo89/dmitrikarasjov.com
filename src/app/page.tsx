@@ -8,51 +8,54 @@ import Link from "next/link";
 import { Code2, TrendingUp, Zap } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Header } from "@/components/Header";
 
 import { projects } from "@/lib/data";
 
 export default function Home() {
   const fadeInUp = {
-    initial: { opacity: 0, y: 20 },
+    initial: { opacity: 0, y: 5 },
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true },
-    transition: { duration: 0.5 }
+    transition: { duration: 1.0 }
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="h-screen snap-y snap-mandatory scroll-smooth overflow-y-scroll">
+      <Header />
+
       {/* Hero Section */}
-      <motion.section
-        className="container mx-auto px-4 py-24 md:py-32 flex flex-col items-center text-center space-y-8"
-        {...fadeInUp}
+      <section
+        className="container snap-start h-screen flex mx-auto"
       >
-        <div className="space-y-4 max-w-3xl">
-          <Badge variant="secondary" className="mb-4">Available for Hire</Badge>
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
-            Crafting Exceptional <br className="hidden sm:inline" />
-            <span className="text-primary">Digital Experiences</span>
-          </h1>
-          <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
-            Senior Frontend Engineer specializing in building user-friendly, pixel-perfect, and performant web applications.
-          </p>
-        </div>
-        <div className="flex flex-col sm:flex-row gap-4">
-          <ContactModal>
-            <Button size="lg">Contact Me</Button>
-          </ContactModal>
-        </div>
-      </motion.section>
+        <motion.section className="flex flex-col items-center text-center space-y-8 justify-center mx-auto px-4" {...fadeInUp}>
+          <div className="space-y-4 max-w-3xl">
+            <Badge variant="secondary" className="mb-8 bg-highlight dark:text-black">Available for Hire</Badge>
+            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl font-martian-mono">
+              Crafting Exceptional <br className="hidden sm:inline" />
+              <span className="text-primary">Digital Experiences</span>
+            </h1>
+            <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl mt-8">
+              Senior Frontend Engineer specializing in building user-friendly, pixel-perfect, and performant web applications.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 font-martian-mono">
+            <ContactModal>
+              <Button size="lg">Contact Me</Button>
+            </ContactModal>
+          </div>
+        </motion.section>
+      </section>
 
       {/* Expertise Section */}
-      <motion.section
-        id="Expertise"
-        className="py-20 bg-background"
-        {...fadeInUp}
+      <section
+        id="expertise"
+        className="snap-center md:h-screen bg-muted/50 flex flex-col items-center justify-center"
       >
-        <div className="container mx-auto px-4">
+        <motion.section className="container mx-auto px-4 py-20" {...fadeInUp}>
           <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">What I Bring to the Table</h2>
-            <p className="mx-auto max-w-[700px] text-muted-foreground md:text-lg">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-martian-mono">My expertise that will help your business</h2>
+            <p className="mx-auto max-w-[700px] text-muted-foreground md:text-lg mt-8">
               Beyond just writing code, I focus on creating value and robust, scalable solutions.
             </p>
           </div>
@@ -62,9 +65,9 @@ export default function Home() {
               <div className="p-3 bg-primary/10 rounded-full">
                 <Code2 className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-xl font-bold">Engineering Excellence</h3>
+              <h3 className="text-xl font-bold font-martian-mono">Engineering Excellence</h3>
               <p className="text-muted-foreground">
-                As a Senior Frontend Engineer, I build pixel-perfect, accessible, and performant web applications using modern architectures like Next.js and React.
+                As a Senior Frontend Engineer, I build pixel-perfect, accessible, and performant web applications using modern frameworks like Next.js and React.
               </p>
             </div>
 
@@ -73,7 +76,7 @@ export default function Home() {
               <div className="p-3 bg-primary/10 rounded-full">
                 <TrendingUp className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-xl font-bold">Business Impact</h3>
+              <h3 className="text-xl font-bold font-martian-mono">Business Impact</h3>
               <p className="text-muted-foreground">
                 I bridge the gap between design and technology to deliver products that drive user engagement, improve retention, and solve real business problems.
               </p>
@@ -84,25 +87,28 @@ export default function Home() {
               <div className="p-3 bg-primary/10 rounded-full">
                 <Zap className="h-8 w-8 text-primary" />
               </div>
-              <h3 className="text-xl font-bold">Core Strengths</h3>
+              <h3 className="text-xl font-bold font-martian-mono">Core Strengths</h3>
               <p className="text-muted-foreground">
                 Scalable Component Systems • Performance Optimization • Technical Leadership • Mentoring • Complex State Management
               </p>
             </div>
           </div>
-        </div>
-      </motion.section>
+        </motion.section>
+      </section>
 
 
 
-      {/* Technologies Section */}
-      <motion.section
-        className="py-20"
-        {...fadeInUp}
+      {/* Stack Section */}
+      <section
+        id="stack"
+        className="snap-center h-screen flex flex-col items-center justify-center"
       >
-        <div className="container mx-auto px-4">
+        <motion.section className="container mx-auto px-4 py-20" {...fadeInUp}>
           <div className="text-center mb-10">
-            <h2 className="text-2xl font-bold tracking-tighter sm:text-3xl">Technologies I Work With</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-martian-mono">Tech Stack I Work With</h2>
+            <p className="mx-auto max-w-[700px] text-muted-foreground md:text-lg mt-8">
+              I work with a minimalist but powerful tech stack that allows me to build high-quality web applications.
+            </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-center opacity-75">
             {/* React */}
@@ -148,19 +154,18 @@ export default function Home() {
               <span className="text-sm font-medium text-muted-foreground group-hover:text-foreground">GraphQL</span>
             </div>
           </div>
-        </div>
-      </motion.section>
+        </motion.section>
+      </section>
 
       {/* Projects Section */}
-      <motion.section
+      <section
         id="projects"
-        className="py-20 bg-muted/50"
-        {...fadeInUp}
+        className="bg-muted/50 snap-center md:h-screen flex flex-col items-center justify-center"
       >
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Featured Projects</h2>
-            <p className="mx-auto max-w-[700px] text-muted-foreground md:text-lg">
+        <motion.section className="container mx-auto px-4 py-20" {...fadeInUp}>
+          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-martian-mono">Featured Projects</h2>
+            <p className="mx-auto max-w-[700px] text-muted-foreground md:text-lg my-8">
               Check out some of my recent work using modern web technologies.
             </p>
           </div>
@@ -194,8 +199,8 @@ export default function Home() {
               </Card>
             ))}
           </div>
-        </div>
-      </motion.section>
+        </motion.section>
+      </section>
 
       {/* Testimonials Section */}
       {/* <section className="py-20 bg-background">
@@ -244,34 +249,32 @@ export default function Home() {
       </section> */}
 
       {/* Contact Section */}
-      <motion.section
+      <section
         id="contact"
-        className="py-20 bg-black text-white"
-        {...fadeInUp}
+        className="snap-center h-screen bg-black text-white flex flex-col justify-between"
       >
-        <div className="container mx-auto px-4 max-w-2xl text-center space-y-8">
-          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-white">Get In Touch</h2>
+        <motion.section className="container flex flex-col mx-auto items-center justify-center h-full px-4 max-w-2xl text-center space-y-8 pt-20" {...fadeInUp}>
+          <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-white font-martian-mono">Get In Touch</h2>
           <p className="text-gray-400 md:text-lg">
-            I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            I'm always open to new opportunities. Whether you have a question or want to work together, drop me a line and I'll get back to you!
           </p>
           <ContactModal>
-            <Button size="lg" className="w-full sm:w-auto bg-white text-black hover:bg-gray-200">
-              Say Hello
+            <Button size="lg" className="w-full sm:w-auto bg-white text-black hover:bg-gray-200 font-martian-mono">
+              Let's Talk
             </Button>
           </ContactModal>
-        </div>
-      </motion.section>
-
-      {/* Footer */}
-      <footer className="py-6 border-t">
-        <div className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-between text-sm text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Dmitri Karasjov. All rights reserved.</p>
-          <div className="flex space-x-4 mt-4 sm:mt-0">
-            <Link href="https://github.com/dimo89" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">GitHub</Link>
-            <Link href="https://www.linkedin.com/in/dmitrikarasjov/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">LinkedIn</Link>
+        </motion.section>
+        {/* Footer */}
+        <footer className="py-6 border-t border-gray-400">
+          <div className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-between text-sm text-gray-400">
+            <p>&copy; {new Date().getFullYear()} Dmitri Karasjov. All rights reserved.</p>
+            <div className="flex space-x-4 mt-4 sm:mt-0">
+              <Link href="https://github.com/dimo89" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-highlight">GitHub</Link>
+              <Link href="https://www.linkedin.com/in/dmitrikarasjov/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-highlight">LinkedIn</Link>
+            </div>
           </div>
-        </div>
-      </footer>
+        </footer>
+      </section>
     </div >
   );
 }
