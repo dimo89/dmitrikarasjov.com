@@ -224,7 +224,7 @@ export default function Home() {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button variant="outline" className="w-full" asChild>
+                  <Button variant="outline" className="w-full font-martian-mono" asChild>
                     <Link href={`/projects/${project.slug}`}>View Details</Link>
                   </Button>
                 </CardFooter>
@@ -300,7 +300,7 @@ export default function Home() {
         <footer className="py-6 border-t border-gray-400">
           <div className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-between text-sm text-gray-400">
             <p>&copy; {new Date().getFullYear()} Dmitri Karasjov. All rights reserved.</p>
-            <div className="flex space-x-4 mt-4 sm:mt-0">
+            <div className="flex space-x-4 mt-4 sm:mt-0 font-martian-mono">
               <Link href="https://github.com/dimo89" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-highlight hover:underline">GitHub</Link>
               <Link href="https://www.linkedin.com/in/dmitrikarasjov/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-highlight hover:underline">LinkedIn</Link>
             </div>

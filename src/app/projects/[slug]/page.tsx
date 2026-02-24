@@ -29,7 +29,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     return (
         <div className="min-h-screen py-12 md:py-24">
             <div className="container mx-auto px-4">
-                <Button variant="ghost" className="mb-8" asChild>
+                <Button variant="ghost" className="mb-8 font-martian-mono" asChild>
                     <Link href="/#projects">
                         <ArrowLeft className="mr-2 h-4 w-4" />
                         Back to Projects
@@ -51,7 +51,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         <div className="space-y-4">
                             <div className="flex items-center gap-4">
                                 <div>
-                                    <h1 className="text-4xl font-bold tracking-tight">{project.title}</h1>
+                                    <h1 className="text-4xl font-bold tracking-tight font-martian-mono">{project.title}</h1>
                                     <p className="text-xl text-muted-foreground mt-2">{project.description}</p>
                                 </div>
                             </div>
@@ -86,16 +86,16 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
                     <div className="space-y-8">
                         <div className="rounded-xl border bg-card p-6 shadow-sm">
-                            <h3 className="mb-4 font-semibold text-lg">Project Details</h3>
+                            <h3 className="mb-4 font-semibold text-lg font-martian-mono">Project Details</h3>
                             <div className="space-y-4">
                                 {project.role && (
                                     <div>
-                                        <span className="block text-sm font-medium text-muted-foreground">My Role</span>
+                                        <span className="block text-sm font-medium text-muted-foreground font-martian-mono">My Role</span>
                                         <span className="font-medium">{project.role}</span>
                                     </div>
                                 )}
                                 <div>
-                                    <span className="block text-sm font-medium text-muted-foreground mb-2">Technologies</span>
+                                    <span className="block text-sm font-medium text-muted-foreground mb-2 font-martian-mono">Technologies</span>
                                     <div className="flex flex-wrap gap-2">
                                         {project.technologies?.map((tech) => (
                                             <Badge key={tech} variant="secondary">{tech}</Badge>
@@ -105,7 +105,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                                     </div>
                                 </div>
                                 <div className="pt-4 border-t">
-                                    <Button className="w-full" asChild>
+                                    <Button className="w-full font-martian-mono" asChild>
                                         <a href={project.link} target="_blank" rel="noopener noreferrer">
                                             Visit Project <ExternalLink className="ml-2 h-4 w-4" />
                                         </a>
