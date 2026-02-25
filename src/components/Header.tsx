@@ -48,7 +48,7 @@ export function Header({ activeSection }: { activeSection: string }) {
                     </SheetTrigger>
                     <SheetContent side="bottom" className="">
                         <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
-                        <div className="flex relative flex-col items-center justify-center space-y-4 pt-8">
+                        <div className="flex relative flex-col items-center justify-center space-y-4 pt-16 px-4">
                             <Button variant={activeSection === 'expertise' ? 'outline' : 'ghost'} className="text-lg font-medium w-full" onClick={() => setOpen(false)} asChild>
                                 <Link href="#expertise">Expertise</Link>
                             </Button>
@@ -61,7 +61,7 @@ export function Header({ activeSection }: { activeSection: string }) {
                             <Button variant={activeSection === 'contact' ? 'outline' : 'ghost'} className="text-lg font-medium w-full" onClick={() => setOpen(false)} asChild>
                                 <Link href="#contact">Contact</Link>
                             </Button>
-                            <div className="absolute top-2 left-2 z-50">
+                            <div className="absolute top-4 left-4 z-50">
                                 <ThemeToggle />
                             </div>
                         </div>
@@ -69,8 +69,11 @@ export function Header({ activeSection }: { activeSection: string }) {
                         <footer className="py-6 border-t">
                             <div className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-between text-sm text-muted-foreground">
                                 <p>&copy; {new Date().getFullYear()} Dmitri Karasjov. All rights reserved.</p>
-                                <div className="flex space-x-4 mt-4 sm:mt-0">
+                                <div className="flex items-center space-x-4 mt-4 sm:mt-0">
+                                    <Link href="https://www.notion.so/dimo89/Dmitri-Karasjov-2f55cfeaf372803e9a3ec1628a81803b" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-highlight hover:underline">CV</Link>
+                                    <div className="h-4 w-[1px] bg-gray-400" />
                                     <Link href="https://github.com/dimo89" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">GitHub</Link>
+                                    <div className="h-4 w-[1px] bg-gray-400" />
                                     <Link href="https://www.linkedin.com/in/dmitrikarasjov/" target="_blank" rel="noopener noreferrer" className="hover:text-foreground">LinkedIn</Link>
                                 </div>
                             </div>
