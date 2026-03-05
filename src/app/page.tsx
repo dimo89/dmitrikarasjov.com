@@ -53,6 +53,7 @@ export default function Home() {
       {/* Hero Section */}
       <section
         id="hero"
+        data-testid="hero-section"
         className="container md:snap-start h-screen flex mx-auto"
       >
         <motion.section className="flex flex-col items-center text-center space-y-8 justify-center mx-auto px-4" {...fadeInUp}>
@@ -82,6 +83,7 @@ export default function Home() {
       {/* Expertise Section */}
       <section
         id="expertise"
+        data-testid="expertise-section"
         className="md:snap-start md:h-screen bg-muted/50 flex flex-col items-center justify-center"
       >
         <motion.section className="container mx-auto px-4 py-20" {...fadeInUp}>
@@ -133,6 +135,7 @@ export default function Home() {
       {/* Stack Section */}
       <section
         id="stack"
+        data-testid="stack-section"
         className="md:snap-start h-screen flex flex-col items-center justify-center"
       >
         <motion.section className="container mx-auto px-4 py-20" {...fadeInUp}>
@@ -192,13 +195,14 @@ export default function Home() {
       {/* Projects Section */}
       <section
         id="projects"
+        data-testid="projects-section"
         className="bg-muted/50 md:snap-start md:h-screen flex flex-col items-center justify-center"
       >
         <motion.section className="container mx-auto px-4 py-20" {...fadeInUp}>
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-martian-mono">Featured Projects</h2>
             <p className="mx-auto max-w-[700px] text-muted-foreground md:text-lg my-8">
-              Check out some of my recent work using modern web technologies.
+              Check out some of my recent work using modern web frameworks.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -283,6 +287,7 @@ export default function Home() {
       {/* Contact Section */}
       <section
         id="contact"
+        data-testid="contact-section"
         className="md:snap-start h-screen bg-black text-white flex flex-col justify-between"
       >
         <motion.section className="container flex flex-col mx-auto items-center justify-center h-full px-4 max-w-2xl text-center space-y-8 pt-20" {...fadeInUp}>
