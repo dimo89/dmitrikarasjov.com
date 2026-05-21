@@ -133,7 +133,7 @@ export default function Home() {
               </ContactModal>
               <span className="text-2xl font-semibold">/&gt;</span>
             </div>
-            <h1 className="flex items-center justify-center font-extrabold tracking-tight text-6xl md:text-7xl lg:text-9xl font-martian-mono">
+            <h1 className="flex items-center justify-center font-extrabold tracking-tight text-4xl md:text-7xl lg:text-9xl font-martian-mono">
               Crafting Exceptional Digital Experiences
             </h1>
             <Typewriter text={sentence} />
