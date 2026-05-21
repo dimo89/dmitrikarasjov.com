@@ -306,7 +306,7 @@ export default function Home() {
           <div className="container mx-auto px-4 flex flex-col sm:flex-row items-center justify-between text-sm text-gray-400">
             <p>&copy; {new Date().getFullYear()} Dmitri Karasjov. All rights reserved.</p>
             <div className="flex items-center space-x-4 mt-4 sm:mt-0 font-martian-mono">
-              <Link href="https://www.notion.so/dimo89/Dmitri-Karasjov-2f55cfeaf372803e9a3ec1628a81803b" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-highlight hover:underline">CV</Link>
+              <Link href="https://dimo89.notion.site/Dmitri-Karasjov-3465cfeaf372809ca11ef8b2512eed2f" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-highlight hover:underline">CV</Link>
               <div className="h-4 w-[1px] bg-gray-400" />
               <Link href="https://github.com/dimo89" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-highlight hover:underline">GitHub</Link>
               <div className="h-4 w-[1px] bg-gray-400" />
