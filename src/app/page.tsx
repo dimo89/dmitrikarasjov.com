@@ -7,17 +7,80 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { Code2, TrendingUp, MonitorSmartphone, BriefcaseBusiness } from "lucide-react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Header } from "@/components/Header";
 import { projects } from "@/lib/data";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const fadeInUp = {
-  initial: { opacity: 0, y: 5 },
+  initial: { opacity: 0, y: 100 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 1.0 }
+  viewport: { once: false, margin: "-10% 0px -10% 0px" },
+  transition: { duration: 2, ease: [0.16, 1, 0.3, 1] as const }
 };
+
+const sentence = "Senior Frontend Engineer specializing in building user-friendly, pixel-perfect, and performant web applications.";
+
+function Typewriter({ text, speed = 50, delay = 1200 }: { text: string; speed?: number; delay?: number }) {
+  const [displayText, setDisplayText] = useState("");
+  const containerRef = useRef<HTMLParagraphElement>(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-10%" });
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    let currentIndex = 0;
+    let timeoutId: ReturnType<typeof setTimeout>;
+
+    const startTimeout = setTimeout(() => {
+      const typeNextChar = () => {
+        if (currentIndex < text.length) {
+          const char = text[currentIndex];
+          currentIndex++;
+          setDisplayText(text.substring(0, currentIndex));
+
+          let nextDelay = speed;
+          const variance = (Math.random() - 0.5) * 30;
+          nextDelay += variance;
+
+          if (char === "." || char === "!" || char === "?") {
+            nextDelay = 400;
+          } else if (char === ",") {
+            nextDelay = 250;
+          } else if (char === " ") {
+            nextDelay = 95;
+          }
+
+          timeoutId = setTimeout(typeNextChar, nextDelay);
+        }
+      };
+
+      typeNextChar();
+    }, delay);
+
+    return () => {
+      clearTimeout(startTimeout);
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [isInView, text, speed, delay]);
+
+  const isComplete = displayText.length === text.length;
+
+  return (
+    <p
+      ref={containerRef}
+      className="mx-auto max-w-[700px] text-muted-foreground md:text-xl mt-8 text-center min-h-[3em]"
+      aria-label={text}
+    >
+      <span>{displayText}</span>
+      <motion.span
+        animate={isComplete ? { opacity: 0 } : { opacity: [1, 0, 1] }}
+        transition={isComplete ? { duration: 0.1 } : { repeat: Infinity, duration: 0.8 }}
+        className="inline-block w-[3px] h-5 ml-1 bg-highlight align-middle"
+      />
+    </p>
+  );
+}
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('hero');
@@ -47,35 +110,33 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="h-screen md:snap-y md:snap-mandatory scroll-smooth md:overflow-y-scroll">
+    <div className="min-h-screen scroll-smooth">
       <Header activeSection={activeSection} />
 
       {/* Hero Section */}
       <section
-        id="hero"
+        id="index"
         data-testid="hero-section"
-        className="container md:snap-start h-screen flex mx-auto"
+        className="container min-h-screen flex mx-auto items-center justify-center"
       >
         <motion.section className="flex flex-col items-center text-center space-y-8 justify-center mx-auto px-4" {...fadeInUp}>
           <div className="space-y-4 max-w-3xl">
-            <Badge asChild variant="secondary" className="mb-8 bg-highlight dark:text-black">
-              <div>
-                <BriefcaseBusiness />
-                <span>Available for Hire</span>
-              </div>
-            </Badge>
-            <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl font-martian-mono">
-              Crafting Exceptional <br className="hidden sm:inline" />
-              <span className="text-primary">Digital Experiences</span>
+            <div className="flex items-center justify-center gap-2 font-mono text-muted-foreground select-none mb-8">
+              <span className="text-2xl font-semibold">&lt;</span>
+              <ContactModal>
+                <Badge asChild variant="secondary" className="bg-highlight dark:text-black m-0 cursor-pointer py-2 px-4 hover:bg-highlight/80 hover:scale-105 transition-all duration-300">
+                  <div>
+                    <BriefcaseBusiness />
+                    <span>Available for Hire</span>
+                  </div>
+                </Badge>
+              </ContactModal>
+              <span className="text-2xl font-semibold">/&gt;</span>
+            </div>
+            <h1 className="flex items-center justify-center font-extrabold tracking-tight text-6xl md:text-7xl lg:text-9xl font-martian-mono">
+              Crafting Exceptional Digital Experiences
             </h1>
-            <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl mt-8">
-              Senior Frontend Engineer specializing in building user-friendly, pixel-perfect, and performant web applications.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4 font-martian-mono">
-            <ContactModal>
-              <Button size="lg">Contact Me</Button>
-            </ContactModal>
+            <Typewriter text={sentence} />
           </div>
         </motion.section>
       </section>
@@ -84,11 +145,11 @@ export default function Home() {
       <section
         id="expertise"
         data-testid="expertise-section"
-        className="md:snap-start md:h-screen bg-muted/50 flex flex-col items-center justify-center"
+        className="min-h-screen bg-muted/50 flex flex-col items-center justify-center"
       >
         <motion.section className="container mx-auto px-4 py-20" {...fadeInUp}>
           <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-martian-mono">My expertise that will help your business</h2>
+            <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl font-martian-mono">My expertise will help your business</h2>
             <p className="mx-auto max-w-[700px] text-muted-foreground md:text-lg mt-8">
               Beyond just writing code, I specialise in Scalable Component Systems, Performance Optimization and Complex State Management.
             </p>
@@ -136,7 +197,7 @@ export default function Home() {
       <section
         id="stack"
         data-testid="stack-section"
-        className="md:snap-start h-screen flex flex-col items-center justify-center"
+        className="min-h-screen flex flex-col items-center justify-center"
       >
         <motion.section className="container mx-auto px-4 py-20" {...fadeInUp}>
           <div className="text-center mb-10">
@@ -196,7 +257,7 @@ export default function Home() {
       <section
         id="projects"
         data-testid="projects-section"
-        className="bg-muted/50 md:snap-start md:h-screen flex flex-col items-center justify-center"
+        className="bg-muted/50 min-h-screen flex flex-col items-center justify-center"
       >
         <motion.section className="container mx-auto px-4 py-20" {...fadeInUp}>
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -288,9 +349,9 @@ export default function Home() {
       <section
         id="contact"
         data-testid="contact-section"
-        className="md:snap-start h-screen bg-black text-white flex flex-col justify-between"
+        className="min-h-screen bg-black text-white flex flex-col justify-between"
       >
-        <motion.section className="container flex flex-col mx-auto items-center justify-center h-full px-4 max-w-2xl text-center space-y-8 pt-20" {...fadeInUp}>
+        <motion.section className="container flex-1 flex flex-col mx-auto items-center justify-center px-4 max-w-2xl text-center space-y-8 py-20" {...fadeInUp}>
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-white font-martian-mono">Get In Touch</h2>
           <p className="text-gray-400 md:text-lg">
             I&apos;m always open to new opportunities. Whether you have a question or want to work together, drop me a line and I&apos;ll get back to you!
