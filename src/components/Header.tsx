@@ -15,7 +15,7 @@ export function Header({ activeSection }: { activeSection: string }) {
             <header className="hidden md:block sticky top-0 z-50 w-full bg-background">
                 <div className="container mx-auto flex py-2 items-center justify-between px-4 relative">
                     <Link href="/" className="flex items-center gap-2">
-                        <Image src="/logo.svg" alt="Logo" width={40} height={40} className="dark:invert" />
+                        <Image src="/logo_full.svg" alt="Logo" width={100} height={40} className="dark:invert hover:cursor-pointer hover:opacity-80 transition-opacity duration-300" />
                     </Link>
                     <nav className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-1">
                         <Button variant={activeSection === 'index' ? 'outline' : 'ghost'} asChild >
@@ -52,6 +52,9 @@ export function Header({ activeSection }: { activeSection: string }) {
                     <SheetContent side="bottom" className="">
                         <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
                         <div className="flex relative flex-col items-center justify-center space-y-4 pt-16 px-4">
+                            <Link href="/" className="flex items-center gap-2">
+                                <Image src="/logo_full.svg" alt="Logo" width={100} height={40} className="dark:invert hover:cursor-pointer hover:opacity-80 transition-opacity duration-300 -mt-14" />
+                            </Link>
                             <Button variant={activeSection === 'index' ? 'outline' : 'ghost'} className="text-lg font-medium w-full" onClick={() => setOpen(false)} asChild>
                                 <Link href="#index">Index</Link>
                             </Button>
