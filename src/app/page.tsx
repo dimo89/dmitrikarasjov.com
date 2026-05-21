@@ -293,11 +293,11 @@ export default function Home() {
         <motion.section className="container flex flex-col mx-auto items-center justify-center h-full px-4 max-w-2xl text-center space-y-8 pt-20" {...fadeInUp}>
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl text-white font-martian-mono">Get In Touch</h2>
           <p className="text-gray-400 md:text-lg">
-            I'm always open to new opportunities. Whether you have a question or want to work together, drop me a line and I'll get back to you!
+            I&apos;m always open to new opportunities. Whether you have a question or want to work together, drop me a line and I&apos;ll get back to you!
           </p>
           <ContactModal>
             <Button size="lg" className="w-full sm:w-auto bg-white text-black hover:bg-gray-200 font-martian-mono">
-              Let's Talk
+              Let&apos;s Talk
             </Button>
           </ContactModal>
         </motion.section>
